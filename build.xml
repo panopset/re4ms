@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="deploylocal">
+  <target name="init">
+    <property environment="env" />
+    <property name="warfile" value="build/libs/re4ms.war" />
+  </target>
+  <target name="deploylocal" depends="init">
+    <echo message="Deploying to: ${env.CATALINA_HOME}/webapps" />
+    <copy todir="${env.CATALINA_HOME}/webapps" file="${warfile}">
+    </copy>
+    <echo message="Deployment complete." />
+  </target>
+</project>

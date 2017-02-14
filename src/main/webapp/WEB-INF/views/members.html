@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="windows-1252"/>
+ <link rel="shortcut icon" href="images/logo16.png"/>
+ <link rel="stylesheet" type="text/css" href="css/re4ms.css"/>
+ <script src='js/jquery.js'></script>
+ <script> 
+  $(function(){
+   $("#includes").load("includes.html"); 
+  });
+  $(document).ready(function(){
+    $('#mbrs').click(function(){
+     setTimeout(function(){location.reload(true)}, 800);
+    });
+  });
+ </script>
+ <title th:text="'Re4ms status:' + ${status}">Re4ms</title>
+</head>
+<body class="mainSlab">
+<!--h1>members.html CHECK THIRD PHASE</h1-->
+<div th:include="includes :: footer"></div>
+<span th:text="${uuid}">uuid</span>
+<form action="nicknames">
+<p style="font-size:small">
+<input type="hidden" name="uuid" th:value="${uuid}"/>
+</p>
+<p>
+<span th:text="#{FIRST3}">FIRST3</span>
+</p>
+
+<div id="mbrs">
+<table class="mbr_table"><col width="160"/>
+<tr><th th:text="#{ONETIMETITLE}">ONETIMETITLE</th></tr>
+<tr class="table_row" th:each="mbrd : ${memberDisplayList}">
+ <td th:class="${mbrd.getNameTDclass()}">
+  <div th:switch="${mbrd.getDownloaded()}">
+   <p th:case="'true'">
+    <span th:text="${mbrd.getDisplayName()}"></span>&nbsp;<span th:text="#{COMPLETE}"></span>
+   </p>
+   <p th:case="'false'">
+    <a th:title="#{AREYOUSURE}" th:class="${mbrd.getNameTDclass()}" th:text="${mbrd.getDisplayName()}" th:href="${mbrd.getLink()}" href="http://panopset.com">&nbsp;</a>
+   </p>
+  </div>
+ </td>
+ <!--  
+ <td th:class="${mbrd.getHelpTDclass()}">
+ <div th:switch="${mbrd.getDownloaded()}">
+  <p th:case="'true'"><span th:text="#{COMPLETE}"></span></p>
+  <p th:case="'false'">&nbsp;</p>
+ </div>
+ </td>
+ -->
+</tr>
+</table>
+</div>
+
+<br/>
+</form>
+<table class="status_table"><col width="160"/>
+<tr><th>Status</th><th>Advancement</th></tr>
+<tr th:each="rd : ${rankDisplayList}">
+ <td th:class="${rd.getNameTDclass()}" th:text="${rd.getName()}">leveName</td>
+ <td th:class="${rd.getHelpTDclass()}" th:text="${rd.getHelp()}">leveDesc</td>
+</tr>
+</table>
+</body></html>

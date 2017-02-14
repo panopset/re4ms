@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="windows-1252"/>
+ <link rel="shortcut icon" href="images/logo16.png"/>
+ <link rel="stylesheet" type="text/css" href="css/re4ms.css"/>
+ <script src='js/jquery.js'></script>
+ <script> 
+  $(function(){
+   $("#includes").load("includes.html"); 
+  });
+ </script>
+ <title th:text="'Re4ms status:' + ${status}">Re4ms</title>
+</head>
+<body class="mainSlab">
+<h1>onetime.html CHECK IF USED</h1>
+<div th:include="includes :: footer"></div>
+<span th:text="${uuid}">uuid</span>
+<form action="nicknames">
+<p style="font-size:small">
+<input type="hidden" name="uuid" th:value="${uuid}"/>
+<input type="hidden" name="memberId" th:value="${memberId}"/>
+</p>
+<span th:text="${nickname}">nickname</span>, 
+<a th:href="@{|/download?uuid=${uuid}&amp;nickname=${nickname}|}" th:text="#{PRIVATEKEYPROMPT}">PRIVATEKEYPROMPT</a>
+<br/>
+</form>
+<table class="status_table"><col width="160"/>
+<tr><th>Status</th><th>Advancement</th></tr>
+<tr th:each="rd : ${rankDisplayList}">
+ <td th:class="${rd.getNameTDclass()}" th:text="${rd.getName()}">leveName</td>
+ <td th:class="${rd.getHelpTDclass()}" th:text="${rd.getHelp()}">leveDesc</td>
+</tr>
+</table>
+</body></html>

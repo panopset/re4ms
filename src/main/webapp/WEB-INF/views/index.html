@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8" />
+<meta name="description" content="Password based encryption."></meta>
+<link rel="shortcut icon" href="images/logo16.png" />
+<link rel="stylesheet" type="text/css" href="css/re4ms.css" />
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='js/jquery.js'></script>
+<script> 
+$(function(){$("#includes").load("includes.html");});
+function pan_update(pan_fld, pan_css, pan_min) {
+ if ($(pan_fld).val().length > pan_min){
+  $(pan_css).css("color", "#bfd");
+ } else {
+  $(pan_css).css("color", "#f00");
+ }
+}
+function pan_validate(pan_fld, pan_css, pan_min) {
+ pan_update(pan_fld, pan_css, pan_min);
+ $(pan_fld).focus(     function(){pan_update(pan_fld, pan_css, pan_min);});
+ $(pan_fld).blur(      function(){pan_update(pan_fld, pan_css, pan_min);});
+ $(pan_fld).on('input',function(){pan_update(pan_fld, pan_css, pan_min);});
+}
+$(document).ready(function(){
+ pan_validate("#msg", "span.legend_msg", 0);
+ pan_validate("#pvk", "span.legend_pvk", 3);
+ pan_validate("#koi", "span.legend_koi", 0);
+});
+</script><title>Re4ms</title></head><body class="mainSlab">
+ <div th:include="includes :: footer"></div>
+ <div th:include="includes :: errmsg"></div>
+ <form id="dform" method="post">
+  <div class="g-recaptcha" data-theme="dark" th:attr="data-sitekey=${re4ms_recaptcha_public}"></div>
+  <table>
+   <tr>
+    <td><span class="legend_pvk" th:text="#{PASSPHRASE}+':'">PASSPHRASE</span>
+     <input id='pvk' style="width: 100%" type="password" name="pvk"
+     th:value="${pvk}" title="PASSPHRASEHELP"
+     th:title="#{PASSPHRASEHELP}" /></td>
+   </tr>
+   <tr>
+    <td><input type="submit" name="btndecrypt"
+     th:value="#{DECRYPT}" accesskey="d" value="DECRYPT" th:title="#{DECRYPTHELP}"
+     title="DECRYPTHELP" /> 
+     <input type="submit" name="btnencrypt"
+     th:value="#{ENCRYPT}" accesskey="e" value="ENCRYPT" th:title="#{ENCRYPTHELP}"
+     title="ENCRYPTHELP" /> 
+     <input type="submit" name="sharekeys"
+     th:value="#{SHAREKEYS}" value="SHAREKEYS" th:title="#{SKHELP}"
+     title="SKHELP" />
+     <span class="legend_koi" th:text="#{KOI}">KOI</span>
+     <input type="text" id="koi" name="koi"
+     th:value="${koi}" value="KOI" th:title="#{KOIHELP}"
+     />
+    </td>
+   </tr>
+   <tr>
+    <td><span class="legend_msg" th:text="#{MSG}+':'">MSG</span> <textarea
+      id='msg' name="msg" rows="8" style="width: 100%" th:text="${msg}"
+      th:title="#{MSGHELP}" title="MSGHELP"></textarea></td>
+   </tr>
+  </table>
+ </form>
+</body></html>

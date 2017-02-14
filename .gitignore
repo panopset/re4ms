@@ -1,0 +1,11 @@
+/bin/
+/build/
+/deploy/
+.project
+.settings
+.classpath
+.factorypath
+.gradle
+testuuid.txt
+/.apt_generated/
+/target/

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="windows-1252"/>
+ <link rel="shortcut icon" href="images/logo16.png"/>
+ <link rel="stylesheet" type="text/css" href="css/re4ms.css"/>
+ <script src='js/jquery.js'></script>
+ <script> 
+  $(function(){
+   $("#includes").load("includes.html"); 
+  });
+ </script>
+ <title th:text="'Re4ms status:' + ${status}">Re4ms</title>
+</head>
+<body class="mainSlab">
+<div th:include="includes :: footer"></div>
+<span th:text="${uuid}">uuid</span>
+<h1 th:text="#{ILLCONGRATS}">ILLCONGRATS</h1>
+<p style="font-size:small">
+<input type="hidden" name="uuid" th:value="${uuid}"/>
+</p>
+<br/>
+<table class="status_table">
+<tr><th>Status</th><th>Advancement</th></tr>
+<tr th:each="rd : ${rankDisplayList}">
+ <td th:class="${rd.getNameTDclass()}" th:text="${rd.getName()}">leveName</td>
+ <td th:class="${rd.getHelpTDclass()}" th:text="${rd.getHelp()}">leveDesc</td>
+</tr>
+</table>
+</body></html>
