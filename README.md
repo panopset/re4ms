@@ -58,7 +58,7 @@ On your machine...
 
 On the server not logged in as root.
 
-    vim /etc/ssh/sshd_config
+    sudo vim /etc/ssh/sshd_config
 
 set
 
