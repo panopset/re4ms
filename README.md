@@ -24,6 +24,8 @@ sold you anything, or made any claims regarding Re4ms security standards.
 * [Disable root access.](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
 * Add some swap space, especially if you have a 512MB server.
 
+Copy into a script:
+
     sudo touch /var/swap.img
     sudo chmod 600 /var/swap.img
     sudo fallocate -l 2G /var/swap.img
