@@ -22,6 +22,40 @@ sold you anything, or made any claims regarding Re4ms security standards.
 
 * Ubuntu 16.04.1 x64 server.
 * [Disable root access.](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
+
+Summary (replace sammy of course):
+
+    adduser sammy
+    usermod -aG sudo sammy
+    cd /home/sammy
+    mkdir .ssh
+
+Back on your machine...
+
+    cd .ssh
+    scp id_rsa.pub re4ms:/home/sammy/.ssh/authorized_keys
+    
+On the server...
+
+    cd /home/sammy
+    chown -R sammy .ssh
+    chgrp -R sammy .ssh
+    su - sammy
+    chmod 700 ~/.ssh
+    cd .ssh
+    chmod 600 authorized_keys
+    
+On your machine...
+
+    vim .ssh/config
+    
+... and update the user from root to sammy.
+
+    Host re4ms
+    Hostname 1.2.3.4
+    User sammy
+    IdentityFile ~/.ssh/id_rsa
+
 * Add some swap space, especially if you have a 512MB server.
 
 Copy into a script:
