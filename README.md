@@ -79,14 +79,28 @@ Copy into a script:
     sudo swapon /var/swap.img
     sudo echo -e "/var/swap.img none swap sw 0 0\n" >> /etc/fstab
 
-* Install [Java 8](http://tipsonubuntu.com/2016/07/31/install-oracle-java-8-9-ubuntu-16-04-linux-mint-18/).
-
-Exit and verify
-
-    java -version
-    echo $JAVA_HOME
-
 * [Install tomcat](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04).
+
+Summary:
+
+    sudo apt-get update
+    sudo apt-get -y install default-jdk
+    sudo groupadd tomcat
+    sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+    mkdir tmp
+    cd tmp
+    curl -O http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
+    sudo mkdir /opt/tomcat
+    sudo tar xzvf apache-tomcat-8.5.11.tar.gz -C /opt/tomcat --strip-components=1
+    cd /opt/tomcat
+    sudo chgrp -R tomcat /opt/tomcat
+    sudo chmod -R g+r conf
+    sudo chmod g+x conf
+    sudo chown -R tomcat webapps/ work/ temp/ logs/
+    
+... continue with step 5 to set up tomcat as a service.
+
+    
 * [Set up HTTPS](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04)
 
     certbot-auto certonly -a webroot --webroot-path=/usr/share/nginx/html -d re4ms.com -d www.re4ms.com
