@@ -56,6 +56,18 @@ On your machine...
     User sammy
     IdentityFile ~/.ssh/id_rsa
 
+On the server not logged in as root.
+
+    vim /etc/ssh/sshd_config
+
+set
+
+    PermitRootLogin no
+
+and then
+
+    sudo service sshd restart
+
 * Add some swap space, especially if you have a 512MB server.
 
 Copy into a script:
