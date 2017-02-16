@@ -106,6 +106,7 @@ Summary:
     certbot-auto certonly -a webroot --webroot-path=/usr/share/nginx/html -d re4ms.com -d www.re4ms.com
     
 * [Verify](https://www.ssllabs.com) HTTPS is good.
+* [Reverse proxy](https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins)
 * Copy setenv.sh to $CATALINA_HOME/bin, and make any available customizations, which are commented in the setenv.sh file.
 * Make whatever customizations to the re4ms project that you like.
 * Create re4ms.war and deploy it locally:
