@@ -17,7 +17,7 @@ import com.panopset.security.TextScrambler;
 
 @Controller
 @SessionAttributes("isHuman")
-@RequestMapping("/")
+@RequestMapping(value={"/","index.html"})
 public class IndexController extends JsonCacheController
     implements Re4msSystemProperties {
 
