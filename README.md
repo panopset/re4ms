@@ -1,6 +1,6 @@
 # Introduction
 
-[Re4ms](http://re4ms.com) is an open source private message sharing system.
+[Re4ms](http://panopset.com/re4ms) is an open source private message sharing system.
 A reasonable Java developer level understanding of Tomcat
 is all that is needed to set up your own Re4ms server, giving
 you complete control of all security aspects of this little
