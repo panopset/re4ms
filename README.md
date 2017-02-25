@@ -37,10 +37,10 @@ Back on your machine...
     
 On the server...
 
-    cd /home/sammy
-    chown -R sammy .ssh
-    chgrp -R sammy .ssh
-    su - sammy
+    cd /home/username
+    chown -R username .ssh
+    chgrp -R username .ssh
+    su - username
     chmod 700 ~/.ssh
     cd .ssh
     chmod 600 authorized_keys
@@ -49,11 +49,11 @@ On your machine...
 
     vim .ssh/config
     
-... and update the user from root to sammy.
+... and update the user from root to username.
 
     Host re4ms
     Hostname 1.2.3.4
-    User sammy
+    User username
     IdentityFile ~/.ssh/id_rsa
 
 On the server not logged in as root.
