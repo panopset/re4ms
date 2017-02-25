@@ -23,17 +23,17 @@ sold you anything, or made any claims regarding Re4ms security standards.
 * Ubuntu 16.04.1 x64 server.
 * [Disable root access.](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
 
-Summary (replace sammy of course):
+Summary (replace username of course):
 
-    adduser sammy
-    usermod -aG sudo sammy
-    cd /home/sammy
+    adduser username
+    usermod -aG sudo username
+    cd /home/username
     mkdir .ssh
 
 Back on your machine...
 
     cd .ssh
-    scp id_rsa.pub re4ms:/home/sammy/.ssh/authorized_keys
+    scp id_rsa.pub re4ms:/home/username/.ssh/authorized_keys
     
 On the server...
 
