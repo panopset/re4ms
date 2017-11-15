@@ -143,8 +143,16 @@ wq, Reload and start
 * [Reverse proxy](https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins)
 * Copy setenv.sh to $CATALINA_HOME/bin, and make any available customizations, which are commented in the setenv.sh file.
 * Make whatever customizations to the re4ms project that you like.
-* Create re4ms.war and deploy it locally:
+* Create re4ms.war and deploy it locally (psuedocode, adjust for your environment:
 
+    projects:
+    parent
+    compat
+
+    git clone github:/panopset/${project}.git
+    cd ${project}
+    mvn clean install
+    
     mvn clean install
 
 * Deploy to your server, something like:
