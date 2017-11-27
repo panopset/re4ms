@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
-import com.panopset.Logop;
+import com.panopset.compat.util.Alert;
 import com.panopset.Stringop;
 import com.panopset.re4ms.hibernate.Re4mSet;
 import com.panopset.re4ms.hibernate.Re4msGroup;
@@ -27,7 +27,7 @@ public abstract class JsonCacheController implements ControlKeys {
           return null;
         }
       } catch (Exception ex) {
-        Logop.error(ex);
+        Alert.red(ex);
         return null;
       }
     }

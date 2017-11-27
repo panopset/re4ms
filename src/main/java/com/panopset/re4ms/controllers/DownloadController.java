@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.panopset.Logop;
+import com.panopset.compat.util.Alert;
 import com.panopset.re4ms.Onetimers;
 
 @Controller
@@ -34,7 +34,7 @@ public class DownloadController extends JsonCacheController {
       response.flushBuffer();
       inputStream.close();
     } catch (Exception ex) {
-      Logop.error(ex);
+      Alert.red(ex);
     }
   }
 }

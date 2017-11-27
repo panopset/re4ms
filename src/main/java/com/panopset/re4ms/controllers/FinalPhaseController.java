@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.common.base.Joiner;
-import com.panopset.Logop;
+import com.panopset.compat.util.Alert;
 import com.panopset.Stringop;
 import com.panopset.re4ms.MemberDisplay;
 import com.panopset.re4ms.Onetimers;
@@ -68,7 +68,7 @@ public class FinalPhaseController extends JsonCacheController {
       try {
         new Onetimers(findRe4ms(uuid)).getOnetimeFile().delete();
       } catch (Exception ex) {
-        Logop.log(ex);
+        Alert.red(ex);
       }
       return Rank.ILLUMINATI.getPage(model);
     }

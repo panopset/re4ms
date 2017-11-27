@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.panopset.Fileop;
-import com.panopset.Logop;
+import com.panopset.compat.util.Alert;
 
 @Controller
 @RequestMapping("/vd9tgzle.htm")
@@ -31,7 +31,7 @@ public class ValidationController {
       response.flushBuffer();
       inputStream.close();
     } catch (Exception ex) {
-      Logop.error(ex);
+      Alert.red(ex);
     }
   }
   

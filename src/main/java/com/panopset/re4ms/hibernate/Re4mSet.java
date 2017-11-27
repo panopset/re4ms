@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.UUID;
 import com.google.common.base.Joiner;
 import com.panopset.Jsonop;
-import com.panopset.Logop;
+import com.panopset.compat.util.Alert;
 import com.panopset.compat.util.Fileop;
 import com.panopset.compat.util.Stringop;
 import com.panopset.re4ms.interfaces.Re4msSystemProperties;
@@ -35,19 +35,19 @@ public enum Re4mSet implements Re4msSystemProperties {
         dir = dft;
       }
       if (!dir.exists() && !dir.mkdirs()) {
-        Logop.log(dir, "Could not create, switching to default.");
+        Alert.yellow(dir, "Could not create, switching to default.");
         dir = dft;
       }
       String realPath = Fileop.getCanonicalPath(dir);
-      Logop.dspmsg("****************************************************");
-      Logop.dspmsg("Temporary files directory is:");
-      Logop.dspmsg(realPath);
-      Logop.dspmsg("****************************************************");
+      Alert.green("****************************************************");
+      Alert.green("Temporary files directory is:");
+      Alert.green(realPath);
+      Alert.green("****************************************************");
       if (!dir.exists()) {
-        Logop.error(Joiner.on(" ").join(realPath, "does not exist."));
+        Alert.red(Joiner.on(" ").join(realPath, "does not exist."));
       }
       if (!dir.canWrite()) {
-        Logop.error(Joiner.on(" ").join(realPath, "is write protected."));
+        Alert.red(Joiner.on(" ").join(realPath, "is write protected."));
         return DEFAULT_DIR;
       }
     }
