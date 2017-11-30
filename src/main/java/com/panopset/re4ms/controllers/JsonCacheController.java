@@ -1,13 +1,10 @@
 package com.panopset.re4ms.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.ui.Model;
-
 import com.panopset.compat.util.Alert;
-import com.panopset.Stringop;
+import com.panopset.compat.util.Stringop;
 import com.panopset.re4ms.hibernate.Re4mSet;
 import com.panopset.re4ms.hibernate.Re4msGroup;
 import com.panopset.re4ms.interfaces.ControlKeys;

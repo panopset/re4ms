@@ -1,8 +1,7 @@
 package com.panopset.re4ms;
 
 import java.io.StringWriter;
-
-import com.panopset.Stringop;
+import com.panopset.compat.util.Stringop;
 import com.panopset.re4ms.hibernate.Member;
 
 public class MemberDisplay {

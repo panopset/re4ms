@@ -2,18 +2,15 @@ package com.panopset.re4ms.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.google.common.base.Joiner;
 import com.panopset.compat.util.Alert;
-import com.panopset.Stringop;
+import com.panopset.compat.util.Stringop;
 import com.panopset.re4ms.MemberDisplay;
 import com.panopset.re4ms.Onetimers;
 import com.panopset.re4ms.hibernate.Member;
