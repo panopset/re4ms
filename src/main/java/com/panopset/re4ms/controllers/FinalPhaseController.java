@@ -16,7 +16,7 @@ import com.panopset.re4ms.Onetimers;
 import com.panopset.re4ms.hibernate.Member;
 import com.panopset.re4ms.hibernate.Re4mSet;
 import com.panopset.re4ms.hibernate.Re4msGroup;
-import com.panopset.re4ms.interfaces.Nls;
+import com.panopset.re4ms.interfaces.NlsHelper;
 import com.panopset.re4ms.interfaces.Rank;
 
 @Controller
@@ -27,7 +27,7 @@ public class FinalPhaseController extends JsonCacheController {
   public String handleRequest(Model model, HttpServletRequest request) {
     Re4msGroup re4ms = (Re4msGroup) request.getSession().getAttribute(RE4MS);
     if (re4ms == null) {
-      model.addAttribute("error", Nls.get("UUID_NOT_FOUND_PROMPT"));
+      model.addAttribute("error", NlsHelper.get("UUID_NOT_FOUND_PROMPT"));
       return "index";
     }
     request.getSession().setAttribute(RE4MS, re4ms);
@@ -39,11 +39,11 @@ public class FinalPhaseController extends JsonCacheController {
   public String handleRequestFromNickname(Model model, HttpServletRequest request,
       @RequestParam("uuid") String uuid) {
     if (!Stringop.isPopulated(uuid)) {
-      return "redirect:/?error=" + Nls.get("UUID_NOT_THERE_PROMPT");
+      return "redirect:/?error=" + NlsHelper.get("UUID_NOT_THERE_PROMPT");
     }
     Re4msGroup re4ms = findRe4ms(uuid);
     if (re4ms == null) {
-      return "redirect:/?error=" + Nls.get("UUID_NOT_FOUND_PROMPT");
+      return "redirect:/?error=" + NlsHelper.get("UUID_NOT_FOUND_PROMPT");
     }
     request.getSession().setAttribute(RE4MS, re4ms);
     addMemberNlsTexts(request.getRequestURL().toString(), model, re4ms);
@@ -75,7 +75,7 @@ public class FinalPhaseController extends JsonCacheController {
       if (memberId.equalsIgnoreCase(mbr.getMemberId())) {
         found = true;
         if (mbr.hasDownloaded()) {
-          model.addAttribute("error", Nls.get(Rank.BOHEMIAN.getHelpKey()));
+          model.addAttribute("error", NlsHelper.get(Rank.BOHEMIAN.getHelpKey()));
           return Rank.BOHEMIAN.getPage(model);
         } else {
           mbr.setDownloaded();
@@ -89,7 +89,7 @@ public class FinalPhaseController extends JsonCacheController {
       return "index";
     }
     if (!Stringop.isPopulated(memberId)) {
-      model.addAttribute("error", Nls.get(Rank.BOHEMIAN.getHelpKey()));
+      model.addAttribute("error", NlsHelper.get(Rank.BOHEMIAN.getHelpKey()));
       return Rank.BOHEMIAN.getPage(model);
     }
     model.addAttribute(MODEL_KEY_MEMBER_ID, memberId);

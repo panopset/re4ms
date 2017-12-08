@@ -3,8 +3,8 @@ package com.panopset.re4ms;
 import java.io.File;
 import java.io.StringWriter;
 import com.google.common.base.Joiner;
-import com.panopset.Fileop;
 import com.panopset.compat.util.Stringop;
+import com.panopset.io.Fileop;
 import com.panopset.re4ms.hibernate.Re4msGroup;
 
 /**

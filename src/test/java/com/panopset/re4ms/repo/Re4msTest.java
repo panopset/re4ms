@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.panopset.re4ms.hibernate.Member;
 import com.panopset.re4ms.hibernate.Re4msGroup;
-import com.panopset.re4ms.interfaces.Nls;
+import com.panopset.re4ms.interfaces.NlsHelper;
 import com.panopset.re4ms.hibernate.Re4mSet;
 
 public class Re4msTest {
@@ -13,7 +13,7 @@ public class Re4msTest {
   @Test
   public void testMessage() {
     Assert.assertEquals("Everyone has their one-time-download passphrase.  All traces of your secret society, bent on world domination, are deleted from the server.", 
-        Nls.get("UUID_NOT_FOUND_PROMPT"));
+        NlsHelper.get("UUID_NOT_FOUND_PROMPT"));
   }
   @Test
   public void simpleTest() {

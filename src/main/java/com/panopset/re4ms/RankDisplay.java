@@ -1,6 +1,6 @@
 package com.panopset.re4ms;
 
-import com.panopset.re4ms.interfaces.Nls;
+import com.panopset.re4ms.interfaces.NlsHelper;
 import com.panopset.re4ms.interfaces.Rank;
 
 public class RankDisplay {
@@ -14,10 +14,10 @@ public class RankDisplay {
     return ic;
   }
   public String getName() {
-    return Nls.get(rank.getNameKey());
+    return NlsHelper.get(rank.getNameKey());
   }
   public String getHelp() {
-    return Nls.get(rank.getHelpKey());
+    return NlsHelper.get(rank.getHelpKey());
   }
   public String getNameTDclass() {
     if (ic) {

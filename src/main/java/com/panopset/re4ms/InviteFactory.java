@@ -3,7 +3,7 @@ package com.panopset.re4ms;
 import java.io.StringWriter;
 
 import com.panopset.re4ms.hibernate.Re4msGroup;
-import com.panopset.re4ms.interfaces.Nls;
+import com.panopset.re4ms.interfaces.NlsHelper;
 
 public class InviteFactory {
   
@@ -18,7 +18,7 @@ public class InviteFactory {
     sw.append("mailto:");
     sw.append(re4ms.getNicknames());
     sw.append("?subject=");
-    sw.append(Nls.get("INVITE_SUBJ"));
+    sw.append(NlsHelper.get("INVITE_SUBJ"));
     sw.append("&body=");
     sw.append(getBodyOfInvite(memberUrl));
     return sw.toString();

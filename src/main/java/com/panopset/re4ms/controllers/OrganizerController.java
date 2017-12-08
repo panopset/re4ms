@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.panopset.compat.util.Stringop;
 import com.panopset.re4ms.hibernate.Re4mSet;
 import com.panopset.re4ms.hibernate.Re4msGroup;
-import com.panopset.re4ms.interfaces.Nls;
+import com.panopset.re4ms.interfaces.NlsHelper;
 import com.panopset.re4ms.interfaces.Rank;
 
 @Controller
@@ -19,7 +19,7 @@ public class OrganizerController extends JsonCacheController {
   @RequestMapping(method = RequestMethod.POST)
   public String handleRequest(Model model, HttpServletRequest request) {
     if (isRobot(model, request)) {
-      model.addAttribute("error", Nls.get("ROBOTS_PROMPT"));
+      model.addAttribute("error", NlsHelper.get("ROBOTS_PROMPT"));
       return "index";
     }
     Re4msGroup brandNewRe4ms = Re4mSet.createGroup();
@@ -34,11 +34,11 @@ public class OrganizerController extends JsonCacheController {
       @RequestParam("nicknames") String nicknames, @RequestParam("pvk") String pvk) {
     model.addAttribute("pvk", pvk);
     if (isRobot(model, request)) {
-      model.addAttribute("error", Nls.get("ROBOTS_PROMPT"));
+      model.addAttribute("error", NlsHelper.get("ROBOTS_PROMPT"));
       return "index";
     }
     if (pvk == null || pvk.length() < 4) {
-      model.addAttribute("error", Nls.get("PASSPHRASE_4CHAR"));
+      model.addAttribute("error", NlsHelper.get("PASSPHRASE_4CHAR"));
       return Rank.ORGANIZER.getPage(model);
     }
     Re4msGroup re4ms = (Re4msGroup) request.getSession().getAttribute(RE4MS);
@@ -51,7 +51,7 @@ public class OrganizerController extends JsonCacheController {
       re4ms.setDisplayNames(nicknames);
       return Rank.SKULL.getForward(model);
     } else {
-      model.addAttribute("error", Nls.get(Rank.ORGANIZER.getHelpKey()));
+      model.addAttribute("error", NlsHelper.get(Rank.ORGANIZER.getHelpKey()));
       return Rank.ORGANIZER.getPage(model);
     }
   }

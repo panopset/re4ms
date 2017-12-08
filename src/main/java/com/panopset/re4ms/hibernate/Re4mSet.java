@@ -3,10 +3,10 @@ package com.panopset.re4ms.hibernate;
 import java.io.File;
 import java.util.UUID;
 import com.google.common.base.Joiner;
-import com.panopset.Jsonop;
 import com.panopset.compat.util.Alert;
-import com.panopset.compat.util.Fileop;
 import com.panopset.compat.util.Stringop;
+import com.panopset.io.Fileop;
+import com.panopset.io.Jsonop;
 import com.panopset.re4ms.interfaces.Re4msSystemProperties;
 
 public enum Re4mSet implements Re4msSystemProperties {

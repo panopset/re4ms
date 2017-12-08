@@ -52,9 +52,9 @@ public enum Rank implements ControlKeys {
     if (ROBOT.equals(this)) {
       return;
     }
-    model.addAttribute(MODEL_KEY_STATUS, Nls.get(name()));
-    String btnText = Nls.get(getBtnKey());
-    String helpText = Nls.get(getHelpKey());
+    model.addAttribute(MODEL_KEY_STATUS, NlsHelper.get(name()));
+    String btnText = NlsHelper.get(getBtnKey());
+    String helpText = NlsHelper.get(getHelpKey());
     model.addAttribute(MODEL_KEY_HELP, helpText);
     model.addAttribute(MODEL_KEY_BTN_TEXT, btnText);
     List<RankDisplay> rankDisplayList = new ArrayList<RankDisplay>();
